@@ -1,0 +1,182 @@
+
+html, body {
+    padding: 0;
+    margin: 0;
+    }
+    html {
+    font-size: 1em;
+    }
+    body {
+    font-size: 100%;
+    }
+    a img, :link img, :visited img {
+    border: 0;
+    }
+//login style-------------------------
+.login-page {
+    background-color: beige;
+    height: 100vh;
+    width: 100vw;
+    background: url(https://cdn5.f-cdn.com/contestentries/329593/14249726/5699389419de1_thumb900.jpg);
+    
+    background-attachment: fixed;
+    background-size: cover;
+    .login-container {
+        width: 400px;
+        height: 400px;
+        border-radius: 20px;
+        padding: 40px;
+        box-sizing: border-box;
+        background: #ecf0f3;
+        box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: auto;
+        
+        
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+        input{
+            margin-bottom: 12px;
+            border-radius: 30px;
+            padding: 7px;
+            border: 1px solid #d8d0d0;
+        }
+        .logo{
+            height: 100px;
+      width: 100px;
+    
+      margin: auto;
+      border-radius: 50%;
+      box-sizing: border-box;
+      box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+    }
+    
+    button {
+        color: white;
+        margin-top: 20px;
+        background: #1DA1F2;
+        height: 40px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 900;
+        box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+        transition: 0.5s;
+        border: 1px solid #d8d0d0;
+      }
+      
+      button:hover {
+        box-shadow: none;
+      }
+      
+    
+    
+    }
+}
+//header stylee------------------------
+.header-container{
+    background-color: #f1952ffa;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    img{
+        width: 28px;
+        height: 28px;
+    }
+}
+
+//weather style----------------------
+.weather-page{
+    background: url(https://img.freepik.com/free-vector/blue-sky-with-shiny-clouds-background_1017-23279.jpg?w=360);
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.weather-container{
+    width: 30%;
+    margin: auto;
+    form{
+        width: 100%;
+        position: relative;
+        display: flex;
+    }
+    input{
+        width: 100%;
+        border: 3px solid #00B4CC;
+        border-right: none;
+        padding: 5px;
+        height: 20px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+    }
+     & input:focus{
+        color: #00B4CC;
+      }
+
+    button{
+        width: 40px;
+        height: 36px;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+
+        img{
+            width: 25px;
+            height: 25px;
+        }
+    }  
+}
+
+.weather-all{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.weather-data{
+        // width: 400px;
+        // height: 450px;
+        // border-radius: 20px;
+        // padding: 40px;
+        // box-sizing: border-box;
+        // background: #ecf0f3;
+        //box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-size: larger;
+    img{
+        width: 60px;
+        border-radius: 50%;
+    }
+    td{
+        //border: 1px solid #ddd;
+        padding: 15px;
+        color: white;
+        
+      
+    }
+}
+
+.weather-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    h2{
+      cursor: grab;
+    }
+}
