@@ -7,30 +7,18 @@ const Login = () => {
    const [user,setUser]=useState({ username: "", password: ""});
    let navigate = useNavigate();
    
-  //  useEffect(() => {
-  //   const LoggedUser = JSON.parse(localStorage.getItem("user"));
-  //   LoggedUser?.loggedIn ? setLoggedIn(true) : setLoggedIn(false);
-  //   LoggedUser?.loggedIn ? navigate("/") : navigate("/login");
-  //   // eslint-disable-next-line
-  // }, [loggedIn]);
-
-  // useEffect(() => {
-  //   loggedIn ? navigate("/") : navigate("/login");
-  //   // eslint-disable-next-line
-  // }, [loggedIn]);
-
+  
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleLogin = (e) => {
+    e.preventDefault();
+
     if (user.username === "murat" && user.password === "1234") {
-      e.preventDefault()
       setLoggedIn(true);
-      // const locaStorageUser = JSON.stringify({ ...user, loggedIn: true });
-      // localStorage.setItem("user", locaStorageUser);
-      localStorage.setItem("user",loggedIn)
-      loggedIn && navigate("/");
+      localStorage.setItem("user",true);
+      navigate("/");
     }
     else{
       alert("kullanıcı adı veya parola hatalı")

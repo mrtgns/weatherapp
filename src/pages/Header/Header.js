@@ -11,8 +11,8 @@ const Header = () => {
    }
   return (
     <div className='header-container'>
-      <img src="https://w7.pngwing.com/pngs/546/46/png-transparent-weather-forecasting-severe-weather-storm-weather-free-text-heart-logo-thumbnail.png" alt=""></img>
-      <button onClick={handleClick} type="submit">Çıkış</button>    
+      <img src="https://www.pngall.com/wp-content/uploads/11/Weather-PNG-Pic.png" alt=""></img>
+      <button onClick={handleClick} type="submit">LogOut</button>    
     </div>
   )
 }

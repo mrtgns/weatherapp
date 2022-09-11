@@ -21,6 +21,9 @@ html, body {
     
     background-attachment: fixed;
     background-size: cover;
+    h2{
+        text-align: center;
+    }
     .login-container {
         width: 400px;
         height: 400px;
@@ -86,8 +89,26 @@ html, body {
     justify-content: space-between;
 
     img{
-        width: 28px;
-        height: 28px;
+        width: 35px;
+        height: 30px;
+    }
+    button{
+        background-color:#00B4CC;
+    border-radius: 100px;
+    box-shadow: rgb(44 187 99 / 20%) 0 -25px 18px -14px inset, rgb(44 187 99 / 15%) 0 1px 2px, rgb(44 187 99 / 15%) 0 2px 4px, rgb(44 187 99 / 15%) 0 4px 8px, rgb(44 187 99 / 15%) 0 8px 16px, rgb(44 187 99 / 15%) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
     }
 }
 
