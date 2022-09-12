@@ -6,7 +6,8 @@ import WeatherContext from "../context/WeatherContext";
 
 function Weather(props) {
   const [cityData, setCityData] = useState("");
-  const API_KEY = "c1079f0b50c86fe81767f08f08d071e6";
+
+  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
   const [selectedCity, setSelectedCity] = useState("");
   const { local, setLocal } = useContext(WeatherContext);
 
@@ -39,6 +40,7 @@ function Weather(props) {
       );
 
       setCityData(data);
+      console.log(cityData);
       submit && addLocalStorage(query);
       props.setLoading(false);
     } catch {
