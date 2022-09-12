@@ -1,53 +1,56 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../pages/Header/Header";
 import loading from "../hoc/Loading";
-
+import WeatherContext from "../context/WeatherContext";
 
 function Weather(props) {
   const [cityData, setCityData] = useState("");
   const API_KEY = "c1079f0b50c86fe81767f08f08d071e6";
-  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedCity, setSelectedCity] = useState("");
+  const { local, setLocal } = useContext(WeatherContext);
 
-
-	const addLocalStorage = (city) => {
+  const addLocalStorage = (city) => {
     let cityList = JSON.parse(localStorage.getItem("city")) || [];
-
     // name check
     if (cityList.includes(city)) {
-      alert('Sehir zaten var!')
+      return null;
     } else {
-
-      if(cityList.length < 3) {
+      if (cityList.length < 3) {
         localStorage.setItem("city", JSON.stringify([...cityList, city]));
+        setLocal([...cityList, city]);
       } else {
         const updatedCityList = cityList.slice(1);
-        localStorage.setItem("city", JSON.stringify([...updatedCityList, city]));
+        localStorage.setItem(
+          "city",
+          JSON.stringify([...updatedCityList, city])
+        );
+        setLocal([...updatedCityList, city]);
       }
     }
-  }
+  };
 
   // function get temp data
   const getTempData = async (api, query, submit) => {
-		props.setLoading(true);
+    props.setLoading(true);
     try {
-        const { data } = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&lang=tr&appid=${api}`
-        );
-				console.log("data", data);
-				setCityData(data);
-				submit && addLocalStorage(query);
+      const { data } = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&lang=tr&appid=${api}`
+      );
+
+      setCityData(data);
+      submit && addLocalStorage(query);
+      props.setLoading(false);
     } catch {
       alert("Geçerli Bir Şehir Adı Giriniz");
     }
-		props.setLoading(false);
   };
 
   // call use Effect for render data every search input
   useEffect(() => {
     // elimde local storage da bir data varsa cek
     let cityList = JSON.parse(localStorage.getItem("city")) || [];
-    if(cityList.length) {
+    if (cityList.length) {
       // default city index is zero
       getTempData(API_KEY, cityList[0]);
     }
@@ -56,12 +59,12 @@ function Weather(props) {
 
   function formSubmit(e) {
     e.preventDefault();
-    console.log('selectedCity____: ', selectedCity);
+
     getTempData(API_KEY, selectedCity, true);
-    setSelectedCity(''); // reset
+    setSelectedCity(""); // reset
   }
 
-  let localData = JSON.parse(localStorage.getItem("city"));
+  //let localData = JSON.parse(localStorage.getItem("city"));
 
   function handleClick(cityName) {
     getTempData(API_KEY, cityName);
@@ -71,25 +74,21 @@ function Weather(props) {
     (item) => item.icon
   )}.png`;
 
-
   return (
     <div className="weather-page">
       <Header />
       <div className="weather-container">
-        <form className="weather-form" >
-          <input 
-            type="text" 
-            placeholder="Enter City Name" 
-            name="city" 
-						value={selectedCity}
-            onChange={e => setSelectedCity(e.target.value)}
+        <form className="weather-form">
+          <input
+            type="text"
+            placeholder="Enter City Name"
+            name="city"
+            value={selectedCity}
+            onChange={(e) => setSelectedCity(e.target.value)}
           />
-          <button 
-						onClick={formSubmit}
-						disabled={!selectedCity}
-						>
+          <button onClick={formSubmit} disabled={!selectedCity}>
             <img
-              src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-1024.png" 
+              src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-1024.png"
               alt="search"
             />
           </button>
@@ -97,14 +96,14 @@ function Weather(props) {
       </div>
       <div className="weather-all">
         <div className="weather-left">
-          <h2 id="localdata" onClick={e=>handleClick(localData[0])}>
-            {localData ? localData[0] : null}
+          <h2 id="localdata" onClick={(e) => handleClick(local[0])}>
+            {local ? local[0] : null}
           </h2>
-          <h2 id="localdata" onClick={e=>handleClick(localData[1])}>
-            {localData ? localData[1] : null}
+          <h2 id="localdata" onClick={(e) => handleClick(local[1])}>
+            {local ? local[1] : null}
           </h2>
-          <h2 id="localdata" onClick={e=>handleClick(localData[2])}>
-            {localData ? localData[2] : null}
+          <h2 id="localdata" onClick={(e) => handleClick(local[2])}>
+            {local ? local[2] : null}
           </h2>
         </div>
 

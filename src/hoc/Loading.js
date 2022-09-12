@@ -3,10 +3,10 @@ import { RevolvingDot } from 'react-loader-spinner'
 
 const loading = (WrappedComponent ) => {
     return props => {
-      const style = {textAlign: 'center'};
+      
         const [loading, setLoading] = useState(false);
         return (
-          <div style={style}>
+          <div className='loading'>
             {loading && (
               <RevolvingDot
                 height="100"
@@ -16,7 +16,7 @@ const loading = (WrappedComponent ) => {
                 secondaryColor=''
                 ariaLabel="revolving-dot-loading"
                 wrapperStyle={{}}
-                wrapperClass=""
+                wrapperClass="weather-all"
                 visible={true}
               />
             )}

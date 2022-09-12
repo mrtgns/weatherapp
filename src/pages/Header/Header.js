@@ -3,11 +3,11 @@ import UserContext from '../../context/UserContext';
 import { useNavigate } from "react-router-dom";
 const Header = () => {
   let navigate = useNavigate();
-  const {loggedIn,setLoggedIn}= useContext(UserContext)
+  const {setLoggedIn}= useContext(UserContext)
    const handleClick = ()=>{
-    localStorage.removeItem("user");
-    setLoggedIn(false);
-    !loggedIn && navigate("/login");
+      setLoggedIn(false);
+      localStorage.setItem("user",false);
+      navigate("/login");
    }
   return (
     <div className='header-container'>
